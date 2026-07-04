@@ -1,0 +1,242 @@
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/* =========================
+   BODY
+========================= */
+
+body{
+
+    background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+    url("../image/restaurant-bg.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+
+    color:white;
+
+    min-height:100vh;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+
+    text-align:center;
+
+    padding:40px 20px 20px;
+}
+
+header h1{
+
+    font-size:45px;
+
+    margin-bottom:10px;
+}
+
+header p{
+
+    font-size:20px;
+
+    color:#eee;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+
+    width:90%;
+
+    margin:20px auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:12px;
+
+    padding:15px;
+}
+
+.navbar a{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    padding:10px 20px;
+
+    border-radius:30px;
+
+    transition:.3s;
+}
+
+.navbar a:hover{
+
+    background:#ff9800;
+}
+
+/* =========================
+   HOME SECTION
+========================= */
+
+.home-container{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:60px auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:30px;
+
+    flex-wrap:wrap;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+
+    width:320px;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:15px;
+
+    padding:30px;
+
+    text-align:center;
+
+    transition:.3s;
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    background:rgba(255,255,255,.22);
+}
+
+.card h2{
+
+    color:white;
+
+    margin-bottom:20px;
+}
+
+.card p{
+
+    color:#eee;
+
+    margin-bottom:25px;
+
+    line-height:1.6;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.btn{
+
+    display:inline-block;
+
+    text-decoration:none;
+
+    background:#ff9800;
+
+    color:white;
+
+    padding:12px 25px;
+
+    border-radius:30px;
+
+    transition:.3s;
+
+    font-weight:bold;
+}
+
+.btn:hover{
+
+    background:#e67e22;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+
+    margin-top:60px;
+
+    text-align:center;
+
+    padding:20px;
+
+    background:rgba(0,0,0,.45);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+header h1{
+
+    font-size:32px;
+}
+
+header p{
+
+    font-size:16px;
+}
+
+.navbar{
+
+    gap:10px;
+}
+
+.navbar a{
+
+    padding:8px 14px;
+}
+
+.card{
+
+    width:100%;
+}
+}

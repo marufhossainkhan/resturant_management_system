@@ -1,0 +1,214 @@
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/* =========================
+   BODY
+========================= */
+
+body{
+
+    background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+    url("../image/restaurant-bg.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+
+    color:white;
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:30px;
+}
+
+/* =========================
+   FORM CONTAINER
+========================= */
+
+.form-container{
+
+    width:100%;
+    max-width:500px;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:15px;
+
+    padding:35px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+/* =========================
+   HEADING
+========================= */
+
+.form-container h2{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+    font-size:32px;
+}
+
+/* =========================
+   LABEL
+========================= */
+
+label{
+
+    display:block;
+
+    margin-top:15px;
+
+    margin-bottom:6px;
+
+    font-weight:bold;
+}
+
+/* =========================
+   INPUT
+========================= */
+
+input,
+select,
+textarea{
+
+    width:100%;
+
+    padding:12px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:8px;
+
+    font-size:16px;
+
+    margin-bottom:10px;
+}
+
+/* =========================
+   PLACEHOLDER
+========================= */
+
+input::placeholder,
+textarea::placeholder{
+
+    color:#777;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+button{
+
+    width:100%;
+
+    margin-top:25px;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:#ff9800;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+button:hover{
+
+    background:#e67e22;
+}
+
+/* =========================
+   LINK
+========================= */
+
+.form-container p{
+
+    text-align:center;
+
+    margin-top:20px;
+}
+
+.form-container a{
+
+    color:#ffcc80;
+
+    text-decoration:none;
+
+    font-weight:bold;
+}
+
+.form-container a:hover{
+
+    text-decoration:underline;
+}
+
+/* =========================
+   CHECKBOX
+========================= */
+
+.checkbox-group{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.checkbox-group input{
+    width:20px;
+    height:20px;
+    transform: scale(1.2);
+}
+
+.checkbox-group span{
+    font-size:16px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:600px){
+
+    .form-container{
+
+        padding:25px;
+    }
+
+    .form-container h2{
+
+        font-size:26px;
+    }
+
+}

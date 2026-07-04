@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customer Registration</title>
+
+    <link rel="stylesheet" href="css/form.css">
+
+</head>
+
+<body>
+
+    <div class="form-container">
+
+        <h2>Customer Registration</h2>
+
+        <form action="#" method="post">
+
+            <label for="fullname">Full Name</label>
+            <input
+                type="text"
+                id="fullname"
+                name="fullname"
+                placeholder="Enter your full name"
+                required
+            >
+
+            <label for="phone">Phone Number</label>
+            <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="01XXXXXXXXX"
+                required
+            >
+
+            <label for="email">Email Address</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+            >
+
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Create a password"
+                required
+            >
+
+            <label for="confirmPassword">Confirm Password</label>
+            <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Confirm your password"
+                required
+            >
+
+            <label for="deliveryArea">Delivery Area</label>
+            <select id="deliveryArea" name="deliveryArea" required>
+                <option value="" selected disabled>-- Select Delivery Area --</option>
+                <option>Dhanmondi</option>
+                <option>Mirpur</option>
+                <option>Mohammadpur</option>
+                <option>Uttara</option>
+                <option>Banani</option>
+                <option>Gulshan</option>
+                <option>Badda</option>
+                <option>Bashundhara</option>
+            </select>
+
+            <label for="address">House / Road / Flat Details</label>
+            <input
+                type="text"
+                id="address"
+                name="address"
+                placeholder="House-12, Road-5, Flat-3A"
+                required
+            >
+
+            <div class="checkbox-group">
+                <input
+                    type="checkbox"
+                    id="terms"
+                    name="terms"
+                    required
+                >
+
+                <label for="terms">
+                    I agree to the Terms & Conditions
+                </label>
+            </div>
+
+            <button type="submit">Create Account</button>
+
+        </form>
+
+        <p>
+            Already have an account?
+            <a href="login.html">Login</a>
+        </p>
+
+    </div>
+
+</body>
+
+</html>
