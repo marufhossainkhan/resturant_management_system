@@ -18,7 +18,7 @@
 
         <h2>Customer Login</h2>
 
-        <form action="#" method="post">
+        <form method="post" id="loginForm">
 
             <label for="email">Email Address</label>
             <input
@@ -48,6 +48,43 @@
         </p>
 
     </div>
+
+    <script>
+
+        const baseUrl = "http://localhost:3000/api/v1";
+        const emailElement = document.getElementById("email");
+        const passwordElement = document.getElementById("password");
+
+        const form = document.getElementById("loginForm");
+
+        const login = async(e)=>{
+            e.preventDefault();
+            
+            const email = emailElement.value;
+            const password = passwordElement.value;
+
+            const loginResponse = await fetch(`${baseUrl}/auth/login`, {
+                method: "POST",
+                headers: {
+                    "Content-Type":"application/json"
+                },
+                body: JSON.stringify({
+                    email,
+                    password
+                })
+            })
+
+            const loginResult = await loginResponse.json();
+
+            localStorage.setItem("token", loginResult.token);
+
+        }
+
+        form.addEventListener("submit", login)
+
+        
+
+    </script>
 
 </body>
 

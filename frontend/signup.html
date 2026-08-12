@@ -18,7 +18,7 @@
 
         <h2>Customer Registration</h2>
 
-        <form action="#" method="post">
+        <form id="signupForm" method="post">
 
             <label for="fullname">Full Name</label>
             <input
@@ -29,14 +29,14 @@
                 required
             >
 
-            <label for="phone">Phone Number</label>
+            <!-- <label for="phone">Phone Number</label>
             <input
                 type="tel"
                 id="phone"
                 name="phone"
                 placeholder="01XXXXXXXXX"
                 required
-            >
+            > -->
 
             <label for="email">Email Address</label>
             <input
@@ -65,40 +65,7 @@
                 required
             >
 
-            <label for="deliveryArea">Delivery Area</label>
-            <select id="deliveryArea" name="deliveryArea" required>
-                <option value="" selected disabled>-- Select Delivery Area --</option>
-                <option>Dhanmondi</option>
-                <option>Mirpur</option>
-                <option>Mohammadpur</option>
-                <option>Uttara</option>
-                <option>Banani</option>
-                <option>Gulshan</option>
-                <option>Badda</option>
-                <option>Bashundhara</option>
-            </select>
-
-            <label for="address">House / Road / Flat Details</label>
-            <input
-                type="text"
-                id="address"
-                name="address"
-                placeholder="House-12, Road-5, Flat-3A"
-                required
-            >
-
-            <div class="checkbox-group">
-                <input
-                    type="checkbox"
-                    id="terms"
-                    name="terms"
-                    required
-                >
-
-                <label for="terms">
-                    I agree to the Terms & Conditions
-                </label>
-            </div>
+            
 
             <button type="submit">Create Account</button>
 
@@ -110,6 +77,47 @@
         </p>
 
     </div>
+
+    <script>
+
+        const baseUrl = "http://localhost:3000/api/v1";
+        const fullNameElement = document.getElementById("fullname");
+        const emailElement = document.getElementById("email");
+        const passwordElement = document.getElementById("password");
+
+        const form = document.getElementById("signupForm");
+
+        const signup = async(e)=>{
+            e.preventDefault();
+            
+            const fullName = fullNameElement.value;
+            const email = emailElement.value;
+            const password = passwordElement.value;
+
+            const signUpResponse = await fetch(`${baseUrl}/auth/sign-up`, {
+                method: "POST",
+                headers: {
+                    "Content-Type":"application/json"
+                },
+                body: JSON.stringify({
+                    email,
+                    password,
+                    fullName
+                })
+            })
+
+            const signupResult = await signUpResponse.json();
+
+            if(signUpResponse.status==200){
+                window.location.href = "/frontend/login.html"
+            }
+
+            alert("Failed to create user")
+
+        }
+
+        form.addEventListener("submit", signup)
+    </script>
 
 </body>
 
