@@ -19,3 +19,13 @@ Content-Type: application/json
     "email": "maruf@gmail.com",
     "password": "1234567"
 }
+
+###
+POST {{BASE_URL}}/item
+Content-Type: application/json
+
+{
+    "itemName": "Salmon Fish Curry",
+    "descriptions": "Bukachuda Marufer banano",
+    "imageUrl": "http://localhost:3000"
+}
