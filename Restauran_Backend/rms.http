@@ -1,7 +1,9 @@
 @BASE_URL = http://localhost:3000/api/v1
 
 
-###
+### ================= AUTH APIS =================
+
+### Login
 POST {{BASE_URL}}/auth/login
 Content-Type: application/json
 
@@ -10,7 +12,7 @@ Content-Type: application/json
     "password": "1234567"
 }
 
-###
+### Sign Up
 POST {{BASE_URL}}/auth/sign-up
 Content-Type: application/json
 
@@ -20,12 +22,68 @@ Content-Type: application/json
     "password": "1234567"
 }
 
-###
-POST {{BASE_URL}}/item
+
+### ================= CATEGORY APIS =================
+
+### Get All Categories (with pagination)
+GET {{BASE_URL}}/categories?page=1&limit=10
+
+### Get Category By ID
+GET {{BASE_URL}}/categories/1
+
+### Create New Category
+POST {{BASE_URL}}/categories
 Content-Type: application/json
 
 {
-    "itemName": "Salmon Fish Curry",
-    "descriptions": "Bukachuda Marufer banano",
-    "imageUrl": "http://localhost:3000"
+    "categoryName": "Main Dishes",
+    "categorySlug": "main-dishes",
+    "categoryDescription": "Burgers, pizzas, pastas, and steaks."
 }
+
+### Update Category
+PUT {{BASE_URL}}/categories/1
+Content-Type: application/json
+
+{
+    "categoryName": "Appetizers & Starters",
+    "categorySlug": "appetizers-starters",
+    "categoryDescription": "Updated description for starters and soups."
+}
+
+### Delete Category
+DELETE {{BASE_URL}}/categories/1
+
+
+### ================= FOOD ITEM APIS =================
+
+### Get All Items (with pagination & category JOIN)
+GET {{BASE_URL}}/items?page=1&limit=10
+
+### Get Item By ID
+GET {{BASE_URL}}/items/1
+
+### Create Food Item (With Category ID)
+POST {{BASE_URL}}/items
+Content-Type: application/json
+
+{
+    "categoryId": 1,
+    "itemName": "Salmon Fish Curry",
+    "descriptions": "Delicious homemade salmon fish curry.",
+    "imageUrl": "http://localhost:3000/images/salmon.jpg"
+}
+
+### Update Food Item (With Category ID)
+PUT {{BASE_URL}}/items/1
+Content-Type: application/json
+
+{
+    "categoryId": 1,
+    "itemName": "Special Salmon Fish Curry",
+    "descriptions": "Chef special fresh salmon fish curry.",
+    "imageUrl": "http://localhost:3000/images/special-salmon.jpg"
+}
+
+### Delete Food Item
+DELETE {{BASE_URL}}/items/1
