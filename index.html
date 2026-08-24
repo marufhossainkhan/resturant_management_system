@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,19 +28,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @media print {
-            body * { visibility: hidden; }
-            #receiptPrintArea, #receiptPrintArea * { visibility: visible; }
-            #receiptPrintArea { position: absolute; left: 0; top: 0; width: 100%; }
-            .no-print { display: none !important; }
+            body * {
+                visibility: hidden;
+            }
+
+            #receiptPrintArea,
+            #receiptPrintArea * {
+                visibility: visible;
+            }
+
+            #receiptPrintArea {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+            }
+
+            .no-print {
+                display: none !important;
+            }
         }
     </style>
 </head>
+
 <body class="bg-gray-100 font-sans antialiased text-gray-800 min-h-screen">
 
     <!-- ================= AUTH GATE: SHOWN ONLY WHEN NOT LOGGED IN ================= -->
-    <div id="unauthenticatedView" class="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-orange-50 via-gray-50 to-orange-100">
+    <div id="unauthenticatedView"
+        class="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-orange-50 via-gray-50 to-orange-100">
         <div class="bg-white rounded-2xl max-w-md w-full p-8 shadow-xl border border-gray-100 relative">
-            
+
             <!-- Login View -->
             <div id="gateLoginBox">
                 <div class="text-center pb-6">
@@ -47,7 +65,8 @@
                         <i class="fa-solid fa-utensils text-3xl"></i>
                     </div>
                     <h2 class="text-2xl font-black text-gray-800 tracking-tight">RestoAdmin Portal</h2>
-                    <p class="text-xs text-gray-500 mt-1">Please sign in to access the restaurant dashboard and orders</p>
+                    <p class="text-xs text-gray-500 mt-1">Please sign in to access the restaurant dashboard and orders
+                    </p>
                 </div>
 
                 <form onsubmit="handleLoginSubmit(event)" class="space-y-4">
@@ -55,17 +74,20 @@
                         <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Email Address</label>
                         <div class="relative">
                             <i class="fa-solid fa-envelope absolute left-3.5 top-3 text-gray-400 text-sm"></i>
-                            <input type="email" id="loginEmail" required placeholder="admin@restaurant.com" class="w-full bg-gray-50 border border-gray-200 pl-10 pr-3 py-2.5 rounded-xl text-sm focus:outline-none focus:border-orange-500 focus:bg-white transition">
+                            <input type="email" id="loginEmail" required placeholder="admin@restaurant.com"
+                                class="w-full bg-gray-50 border border-gray-200 pl-10 pr-3 py-2.5 rounded-xl text-sm focus:outline-none focus:border-orange-500 focus:bg-white transition">
                         </div>
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Password</label>
                         <div class="relative">
                             <i class="fa-solid fa-lock absolute left-3.5 top-3 text-gray-400 text-sm"></i>
-                            <input type="password" id="loginPassword" required placeholder="••••••••" class="w-full bg-gray-50 border border-gray-200 pl-10 pr-3 py-2.5 rounded-xl text-sm focus:outline-none focus:border-orange-500 focus:bg-white transition">
+                            <input type="password" id="loginPassword" required placeholder="••••••••"
+                                class="w-full bg-gray-50 border border-gray-200 pl-10 pr-3 py-2.5 rounded-xl text-sm focus:outline-none focus:border-orange-500 focus:bg-white transition">
                         </div>
                     </div>
-                    <button type="submit" id="loginSubmitBtn" class="w-full bg-orange-600 hover:bg-orange-700 text-white py-3 rounded-xl text-sm font-bold shadow-md hover:shadow-lg transition flex items-center justify-center gap-2">
+                    <button type="submit" id="loginSubmitBtn"
+                        class="w-full bg-orange-600 hover:bg-orange-700 text-white py-3 rounded-xl text-sm font-bold shadow-md hover:shadow-lg transition flex items-center justify-center gap-2">
                         <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign In to Dashboard
                     </button>
                 </form>
@@ -74,18 +96,18 @@
                 <div class="mt-6 pt-4 border-t border-gray-100 text-center space-y-2.5">
                     <p class="text-xs text-gray-400 font-semibold uppercase tracking-wider">Quick Demo Logins</p>
                     <div class="flex gap-2 justify-center">
-                        <button type="button" onclick="quickLogin('admin@restaurant.com', 'admin123')" class="bg-orange-50 hover:bg-orange-100 text-orange-700 text-xs px-3 py-1.5 rounded-lg font-bold border border-orange-200 transition flex items-center gap-1.5 shadow-sm">
+                        <button type="button" onclick="quickLogin('admin@restaurant.com', 'admin123')"
+                            class="bg-orange-50 hover:bg-orange-100 text-orange-700 text-xs px-3 py-1.5 rounded-lg font-bold border border-orange-200 transition flex items-center gap-1.5 shadow-sm">
                             <i class="fa-solid fa-user-shield"></i> Admin Demo
                         </button>
-                        <button type="button" onclick="quickLogin('maruf@gmail.com', '1234567')" class="bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs px-3 py-1.5 rounded-lg font-bold border border-blue-200 transition flex items-center gap-1.5 shadow-sm">
-                            <i class="fa-solid fa-user"></i> Customer Demo
-                        </button>
+
                     </div>
                 </div>
 
                 <div class="text-center mt-6 text-xs text-gray-500">
-                    Don't have an account? 
-                    <button type="button" onclick="toggleGateView('signup')" class="text-orange-600 font-bold hover:underline">Register Here</button>
+                    Don't have an account?
+                    <button type="button" onclick="toggleGateView('signup')"
+                        class="text-orange-600 font-bold hover:underline">Register Here</button>
                 </div>
             </div>
 
@@ -102,28 +124,34 @@
                 <form onsubmit="handleSignupSubmit(event)" class="space-y-3.5">
                     <div>
                         <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Full Name</label>
-                        <input type="text" id="signupName" required placeholder="Maruf Hossain" class="w-full bg-gray-50 border border-gray-200 px-3.5 py-2.5 rounded-xl text-sm focus:outline-none focus:border-orange-500 focus:bg-white transition">
+                        <input type="text" id="signupName" required placeholder="Maruf Hossain"
+                            class="w-full bg-gray-50 border border-gray-200 px-3.5 py-2.5 rounded-xl text-sm focus:outline-none focus:border-orange-500 focus:bg-white transition">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Email Address</label>
-                        <input type="email" id="signupEmail" required placeholder="user@example.com" class="w-full bg-gray-50 border border-gray-200 px-3.5 py-2.5 rounded-xl text-sm focus:outline-none focus:border-orange-500 focus:bg-white transition">
+                        <input type="email" id="signupEmail" required placeholder="user@example.com"
+                            class="w-full bg-gray-50 border border-gray-200 px-3.5 py-2.5 rounded-xl text-sm focus:outline-none focus:border-orange-500 focus:bg-white transition">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Phone Number</label>
-                        <input type="tel" id="signupPhone" placeholder="+88018XXXXXXXX" class="w-full bg-gray-50 border border-gray-200 px-3.5 py-2.5 rounded-xl text-sm focus:outline-none focus:border-orange-500 focus:bg-white transition">
+                        <input type="tel" id="signupPhone" placeholder="+88018XXXXXXXX"
+                            class="w-full bg-gray-50 border border-gray-200 px-3.5 py-2.5 rounded-xl text-sm focus:outline-none focus:border-orange-500 focus:bg-white transition">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Password</label>
-                        <input type="password" id="signupPassword" required placeholder="••••••••" class="w-full bg-gray-50 border border-gray-200 px-3.5 py-2.5 rounded-xl text-sm focus:outline-none focus:border-orange-500 focus:bg-white transition">
+                        <input type="password" id="signupPassword" required placeholder="••••••••"
+                            class="w-full bg-gray-50 border border-gray-200 px-3.5 py-2.5 rounded-xl text-sm focus:outline-none focus:border-orange-500 focus:bg-white transition">
                     </div>
-                    <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white py-3 rounded-xl text-sm font-bold shadow-md hover:shadow-lg transition">
+                    <button type="submit"
+                        class="w-full bg-orange-600 hover:bg-orange-700 text-white py-3 rounded-xl text-sm font-bold shadow-md hover:shadow-lg transition">
                         Register & Login
                     </button>
                 </form>
 
                 <div class="text-center mt-6 text-xs text-gray-500">
-                    Already have an account? 
-                    <button type="button" onclick="toggleGateView('login')" class="text-orange-600 font-bold hover:underline">Sign In</button>
+                    Already have an account?
+                    <button type="button" onclick="toggleGateView('login')"
+                        class="text-orange-600 font-bold hover:underline">Sign In</button>
                 </div>
             </div>
 
@@ -133,7 +161,8 @@
     <!-- ================= AUTHENTICATED APP: SHOWN ONLY WHEN LOGGED IN ================= -->
     <div id="authenticatedApp" class="hidden">
         <!-- Header -->
-        <header class="bg-white shadow-sm h-16 fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-6">
+        <header
+            class="bg-white shadow-sm h-16 fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-6">
             <div class="flex items-center space-x-3 sm:space-x-4">
                 <button id="sidebarToggle" class="text-gray-500 hover:text-gray-700 focus:outline-none md:hidden p-1">
                     <i class="fa-solid fa-bars text-xl"></i>
@@ -142,11 +171,13 @@
                     <i class="fa-solid fa-utensils"></i> RestoAdmin
                 </div>
             </div>
-            
+
             <!-- Global Search Bar -->
             <div class="hidden md:flex items-center bg-gray-100 px-3 py-1.5 rounded-lg w-72 lg:w-96">
                 <i class="fa-solid fa-search text-gray-400 mr-2"></i>
-                <input type="text" id="globalSearchInput" placeholder="Search orders, menu, customer..." onkeyup="handleGlobalSearch(event)" class="bg-transparent border-none outline-none w-full text-sm text-gray-700">
+                <input type="text" id="globalSearchInput" placeholder="Search orders, menu, customer..."
+                    onkeyup="handleGlobalSearch(event)"
+                    class="bg-transparent border-none outline-none w-full text-sm text-gray-700">
             </div>
 
             <!-- User Profile Header Section -->
@@ -159,37 +190,44 @@
 
         <div class="flex pt-16 min-h-screen">
             <!-- Sidebar Navigation -->
-            <aside id="sidebar" class="bg-white w-64 shadow-sm fixed inset-y-0 left-0 pt-16 z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-200 ease-in-out flex flex-col justify-between">
+            <aside id="sidebar"
+                class="bg-white w-64 shadow-sm fixed inset-y-0 left-0 pt-16 z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-200 ease-in-out flex flex-col justify-between">
                 <ul class="py-4 space-y-1">
                     <li>
-                        <button onclick="switchTab('dashboard')" id="nav-dashboard" class="w-full flex items-center space-x-3 px-6 py-3 text-sm font-medium text-orange-600 bg-orange-50 border-r-4 border-orange-600 transition">
+                        <button onclick="switchTab('dashboard')" id="nav-dashboard"
+                            class="w-full flex items-center space-x-3 px-6 py-3 text-sm font-medium text-orange-600 bg-orange-50 border-r-4 border-orange-600 transition">
                             <i class="fa-solid fa-chart-pie w-5 text-center"></i>
                             <span>Dashboard</span>
                         </button>
                     </li>
                     <li>
-                        <button onclick="switchTab('orders')" id="nav-orders" class="w-full flex items-center justify-between px-6 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition">
+                        <button onclick="switchTab('orders')" id="nav-orders"
+                            class="w-full flex items-center justify-between px-6 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition">
                             <div class="flex items-center space-x-3">
                                 <i class="fa-solid fa-receipt w-5 text-center"></i>
                                 <span>Orders</span>
                             </div>
-                            <span id="pendingBadgeSidebar" class="hidden bg-orange-100 text-orange-700 text-xs px-2 py-0.5 rounded-full font-bold">0</span>
+                            <span id="pendingBadgeSidebar"
+                                class="hidden bg-orange-100 text-orange-700 text-xs px-2 py-0.5 rounded-full font-bold">0</span>
                         </button>
                     </li>
                     <li>
-                        <button onclick="switchTab('pos')" id="nav-pos" class="w-full flex items-center space-x-3 px-6 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition">
+                        <button onclick="switchTab('pos')" id="nav-pos"
+                            class="w-full flex items-center space-x-3 px-6 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition">
                             <i class="fa-solid fa-cart-plus w-5 text-center"></i>
                             <span>Place Order (POS)</span>
                         </button>
                     </li>
                     <li>
-                        <button onclick="switchTab('categories')" id="nav-categories" class="w-full flex items-center space-x-3 px-6 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition">
+                        <button onclick="switchTab('categories')" id="nav-categories"
+                            class="w-full flex items-center space-x-3 px-6 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition">
                             <i class="fa-solid fa-tags w-5 text-center"></i>
                             <span>Categories</span>
                         </button>
                     </li>
                     <li>
-                        <button onclick="switchTab('menu')" id="nav-menu" class="w-full flex items-center space-x-3 px-6 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition">
+                        <button onclick="switchTab('menu')" id="nav-menu"
+                            class="w-full flex items-center space-x-3 px-6 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition">
                             <i class="fa-solid fa-burger w-5 text-center"></i>
                             <span>Food Menu</span>
                         </button>
@@ -212,10 +250,12 @@
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div>
                             <h1 class="text-2xl font-bold text-gray-800">Restaurant Overview</h1>
-                            <p class="text-sm text-gray-500">Real-time statistics for orders, revenue, and menu items.</p>
+                            <p class="text-sm text-gray-500">Real-time statistics for orders, revenue, and menu items.
+                            </p>
                         </div>
                         <div class="flex gap-2">
-                            <button onclick="switchTab('pos')" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-sm transition flex items-center gap-2">
+                            <button onclick="switchTab('pos')"
+                                class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-sm transition flex items-center gap-2">
                                 <i class="fa-solid fa-plus"></i> New Order
                             </button>
                         </div>
@@ -223,36 +263,44 @@
 
                     <!-- Stats Grid -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+                        <div
+                            class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
                             <div>
                                 <p class="text-xs font-semibold text-gray-400 uppercase">Total Revenue</p>
                                 <h3 id="dashRevenue" class="text-2xl font-bold text-gray-800 mt-1">৳0.00</h3>
                             </div>
-                            <div class="bg-emerald-50 p-3 rounded-lg text-emerald-600"><i class="fa-solid fa-money-bill-wave text-xl"></i></div>
+                            <div class="bg-emerald-50 p-3 rounded-lg text-emerald-600"><i
+                                    class="fa-solid fa-money-bill-wave text-xl"></i></div>
                         </div>
 
-                        <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+                        <div
+                            class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
                             <div>
                                 <p class="text-xs font-semibold text-gray-400 uppercase">Total Orders</p>
                                 <h3 id="dashTotalOrders" class="text-2xl font-bold text-gray-800 mt-1">0</h3>
                             </div>
-                            <div class="bg-blue-50 p-3 rounded-lg text-blue-600"><i class="fa-solid fa-receipt text-xl"></i></div>
+                            <div class="bg-blue-50 p-3 rounded-lg text-blue-600"><i
+                                    class="fa-solid fa-receipt text-xl"></i></div>
                         </div>
 
-                        <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+                        <div
+                            class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
                             <div>
                                 <p class="text-xs font-semibold text-gray-400 uppercase">Pending Orders</p>
                                 <h3 id="dashPendingOrders" class="text-2xl font-bold text-orange-600 mt-1">0</h3>
                             </div>
-                            <div class="bg-orange-50 p-3 rounded-lg text-orange-600"><i class="fa-solid fa-clock text-xl"></i></div>
+                            <div class="bg-orange-50 p-3 rounded-lg text-orange-600"><i
+                                    class="fa-solid fa-clock text-xl"></i></div>
                         </div>
 
-                        <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+                        <div
+                            class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
                             <div>
                                 <p class="text-xs font-semibold text-gray-400 uppercase">Food Items</p>
                                 <h3 id="dashItemCount" class="text-2xl font-bold text-gray-800 mt-1">0</h3>
                             </div>
-                            <div class="bg-purple-50 p-3 rounded-lg text-purple-600"><i class="fa-solid fa-burger text-xl"></i></div>
+                            <div class="bg-purple-50 p-3 rounded-lg text-purple-600"><i
+                                    class="fa-solid fa-burger text-xl"></i></div>
                         </div>
                     </div>
 
@@ -260,7 +308,9 @@
                     <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                         <div class="p-4 border-b border-gray-100 flex items-center justify-between">
                             <h2 class="font-bold text-gray-800">Recent Orders</h2>
-                            <button onclick="switchTab('orders')" class="text-xs text-orange-600 font-semibold hover:underline">View All Orders &rarr;</button>
+                            <button onclick="switchTab('orders')"
+                                class="text-xs text-orange-600 font-semibold hover:underline">View All Orders
+                                &rarr;</button>
                         </div>
                         <div class="overflow-x-auto">
                             <table class="w-full text-left border-collapse text-sm">
@@ -275,7 +325,10 @@
                                     </tr>
                                 </thead>
                                 <tbody id="dashRecentOrdersBody" class="divide-y divide-gray-100 text-gray-700">
-                                    <tr><td colspan="6" class="p-4 text-center text-gray-400">Loading recent orders...</td></tr>
+                                    <tr>
+                                        <td colspan="6" class="p-4 text-center text-gray-400">Loading recent orders...
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -289,26 +342,38 @@
                             <h1 class="text-2xl font-bold text-gray-800">Order Management</h1>
                             <p class="text-sm text-gray-500">Track and update customer orders in real-time.</p>
                         </div>
-                        <button onclick="switchTab('pos')" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition flex items-center gap-2 self-start">
+                        <button onclick="switchTab('pos')"
+                            class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition flex items-center gap-2 self-start">
                             <i class="fa-solid fa-cart-plus"></i> Place New Order
                         </button>
                     </div>
 
                     <!-- Filters & Search -->
-                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col md:flex-row gap-4 justify-between items-center">
-                        <div class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0" id="orderStatusTabs">
-                            <button onclick="filterOrders('all')" class="status-tab-btn active bg-orange-50 text-orange-600 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap">All</button>
-                            <button onclick="filterOrders('pending')" class="status-tab-btn text-gray-600 hover:bg-gray-100 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap">Pending</button>
-                            <button onclick="filterOrders('confirmed')" class="status-tab-btn text-gray-600 hover:bg-gray-100 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap">Confirmed</button>
-                            <button onclick="filterOrders('preparing')" class="status-tab-btn text-gray-600 hover:bg-gray-100 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap">Preparing</button>
-                            <button onclick="filterOrders('ready')" class="status-tab-btn text-gray-600 hover:bg-gray-100 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap">Ready</button>
-                            <button onclick="filterOrders('delivered')" class="status-tab-btn text-gray-600 hover:bg-gray-100 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap">Delivered</button>
-                            <button onclick="filterOrders('cancelled')" class="status-tab-btn text-gray-600 hover:bg-gray-100 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap">Cancelled</button>
+                    <div
+                        class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col md:flex-row gap-4 justify-between items-center">
+                        <div class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0"
+                            id="orderStatusTabs">
+                            <button onclick="filterOrders('all')"
+                                class="status-tab-btn active bg-orange-50 text-orange-600 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap">All</button>
+                            <button onclick="filterOrders('pending')"
+                                class="status-tab-btn text-gray-600 hover:bg-gray-100 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap">Pending</button>
+                            <button onclick="filterOrders('confirmed')"
+                                class="status-tab-btn text-gray-600 hover:bg-gray-100 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap">Confirmed</button>
+                            <button onclick="filterOrders('preparing')"
+                                class="status-tab-btn text-gray-600 hover:bg-gray-100 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap">Preparing</button>
+                            <button onclick="filterOrders('ready')"
+                                class="status-tab-btn text-gray-600 hover:bg-gray-100 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap">Ready</button>
+                            <button onclick="filterOrders('delivered')"
+                                class="status-tab-btn text-gray-600 hover:bg-gray-100 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap">Delivered</button>
+                            <button onclick="filterOrders('cancelled')"
+                                class="status-tab-btn text-gray-600 hover:bg-gray-100 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap">Cancelled</button>
                         </div>
 
                         <div class="relative w-full md:w-72">
                             <i class="fa-solid fa-search absolute left-3 top-2.5 text-gray-400 text-xs"></i>
-                            <input type="text" id="orderSearchInput" oninput="searchOrders(this.value)" placeholder="Search order ID, customer..." class="w-full bg-gray-50 border border-gray-200 pl-8 pr-3 py-1.5 rounded-lg text-xs focus:outline-none focus:border-orange-500">
+                            <input type="text" id="orderSearchInput" oninput="searchOrders(this.value)"
+                                placeholder="Search order ID, customer..."
+                                class="w-full bg-gray-50 border border-gray-200 pl-8 pr-3 py-1.5 rounded-lg text-xs focus:outline-none focus:border-orange-500">
                         </div>
                     </div>
 
@@ -328,7 +393,9 @@
                                     </tr>
                                 </thead>
                                 <tbody id="ordersTableBody" class="divide-y divide-gray-100 text-gray-700">
-                                    <tr><td colspan="7" class="p-6 text-center text-gray-400">Loading orders...</td></tr>
+                                    <tr>
+                                        <td colspan="7" class="p-6 text-center text-gray-400">Loading orders...</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -339,17 +406,23 @@
                 <div id="page-pos" class="space-y-6 hidden">
                     <div>
                         <h1 class="text-2xl font-bold text-gray-800">Place New Order (POS)</h1>
-                        <p class="text-sm text-gray-500">Create a customer or dine-in order and generate an immediate ticket.</p>
+                        <p class="text-sm text-gray-500">Create a customer or dine-in order and generate an immediate
+                            ticket.</p>
                     </div>
 
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         <!-- Menu Selection (Left 2 cols) -->
                         <div class="lg:col-span-2 space-y-4">
-                            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-wrap gap-2 items-center justify-between">
+                            <div
+                                class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-wrap gap-2 items-center justify-between">
                                 <div class="flex items-center gap-1.5 overflow-x-auto pb-1" id="posCategoryTabs">
-                                    <button onclick="filterPosMenu(null)" class="pos-cat-btn active bg-orange-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold">All Categories</button>
+                                    <button onclick="filterPosMenu(null)"
+                                        class="pos-cat-btn active bg-orange-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold">All
+                                        Categories</button>
                                 </div>
-                                <input type="text" id="posSearchInput" oninput="searchPosMenu(this.value)" placeholder="Search food items..." class="bg-gray-50 border border-gray-200 px-3 py-1.5 rounded-lg text-xs focus:outline-none focus:border-orange-500 w-full sm:w-48">
+                                <input type="text" id="posSearchInput" oninput="searchPosMenu(this.value)"
+                                    placeholder="Search food items..."
+                                    class="bg-gray-50 border border-gray-200 px-3 py-1.5 rounded-lg text-xs focus:outline-none focus:border-orange-500 w-full sm:w-48">
                             </div>
 
                             <!-- POS Items Grid -->
@@ -359,46 +432,55 @@
                         </div>
 
                         <!-- Cart / Order Summary (Right col) -->
-                        <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 h-fit space-y-4 sticky top-20">
+                        <div
+                            class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 h-fit space-y-4 sticky top-20">
                             <div class="flex items-center justify-between border-b pb-3">
                                 <h2 class="font-bold text-gray-800 flex items-center gap-2">
                                     <i class="fa-solid fa-shopping-cart text-orange-600"></i> Order Ticket
                                 </h2>
-                                <button onclick="clearPosCart()" class="text-xs text-red-500 hover:underline">Clear</button>
+                                <button onclick="clearPosCart()"
+                                    class="text-xs text-red-500 hover:underline">Clear</button>
                             </div>
 
                             <!-- Cart Items List -->
                             <div id="posCartItems" class="space-y-3 max-h-64 overflow-y-auto pr-1">
-                                <div class="text-center py-8 text-gray-400 text-xs">Your cart is empty. Click items to add.</div>
+                                <div class="text-center py-8 text-gray-400 text-xs">Your cart is empty. Click items to
+                                    add.</div>
                             </div>
 
                             <!-- Customer Details Form -->
                             <div class="border-t pt-3 space-y-3 text-xs">
                                 <div>
                                     <label class="block font-semibold text-gray-600 mb-1">Customer Name *</label>
-                                    <input type="text" id="posCustomerName" placeholder="e.g. Maruf Hossain" class="w-full bg-gray-50 border border-gray-200 px-2.5 py-1.5 rounded-lg focus:outline-none focus:border-orange-500">
+                                    <input type="text" id="posCustomerName" placeholder="e.g. Maruf Hossain"
+                                        class="w-full bg-gray-50 border border-gray-200 px-2.5 py-1.5 rounded-lg focus:outline-none focus:border-orange-500">
                                 </div>
 
                                 <div class="grid grid-cols-2 gap-2">
                                     <div>
                                         <label class="block font-semibold text-gray-600 mb-1">Phone Number</label>
-                                        <input type="tel" id="posCustomerPhone" placeholder="018XXXXXXXX" class="w-full bg-gray-50 border border-gray-200 px-2.5 py-1.5 rounded-lg focus:outline-none focus:border-orange-500">
+                                        <input type="tel" id="posCustomerPhone" placeholder="018XXXXXXXX"
+                                            class="w-full bg-gray-50 border border-gray-200 px-2.5 py-1.5 rounded-lg focus:outline-none focus:border-orange-500">
                                     </div>
                                     <div>
                                         <label class="block font-semibold text-gray-600 mb-1">Table No / Room</label>
-                                        <input type="text" id="posTableNo" placeholder="Table 5" class="w-full bg-gray-50 border border-gray-200 px-2.5 py-1.5 rounded-lg focus:outline-none focus:border-orange-500">
+                                        <input type="text" id="posTableNo" placeholder="Table 5"
+                                            class="w-full bg-gray-50 border border-gray-200 px-2.5 py-1.5 rounded-lg focus:outline-none focus:border-orange-500">
                                     </div>
                                 </div>
 
                                 <div>
-                                    <label class="block font-semibold text-gray-600 mb-1">Delivery Address (Optional)</label>
-                                    <input type="text" id="posAddress" placeholder="Street, area..." class="w-full bg-gray-50 border border-gray-200 px-2.5 py-1.5 rounded-lg focus:outline-none focus:border-orange-500">
+                                    <label class="block font-semibold text-gray-600 mb-1">Delivery Address
+                                        (Optional)</label>
+                                    <input type="text" id="posAddress" placeholder="Street, area..."
+                                        class="w-full bg-gray-50 border border-gray-200 px-2.5 py-1.5 rounded-lg focus:outline-none focus:border-orange-500">
                                 </div>
 
                                 <div class="grid grid-cols-2 gap-2">
                                     <div>
                                         <label class="block font-semibold text-gray-600 mb-1">Payment Method</label>
-                                        <select id="posPaymentMethod" class="w-full bg-gray-50 border border-gray-200 px-2.5 py-1.5 rounded-lg focus:outline-none focus:border-orange-500">
+                                        <select id="posPaymentMethod"
+                                            class="w-full bg-gray-50 border border-gray-200 px-2.5 py-1.5 rounded-lg focus:outline-none focus:border-orange-500">
                                             <option value="cash">Cash</option>
                                             <option value="card">Card</option>
                                             <option value="online">Online / bKash</option>
@@ -406,7 +488,8 @@
                                     </div>
                                     <div>
                                         <label class="block font-semibold text-gray-600 mb-1">Notes</label>
-                                        <input type="text" id="posNotes" placeholder="Spiciness, napkins..." class="w-full bg-gray-50 border border-gray-200 px-2.5 py-1.5 rounded-lg focus:outline-none focus:border-orange-500">
+                                        <input type="text" id="posNotes" placeholder="Spiciness, napkins..."
+                                            class="w-full bg-gray-50 border border-gray-200 px-2.5 py-1.5 rounded-lg focus:outline-none focus:border-orange-500">
                                     </div>
                                 </div>
                             </div>
@@ -423,7 +506,8 @@
                                 </div>
                             </div>
 
-                            <button onclick="submitPosOrder()" class="w-full bg-orange-600 hover:bg-orange-700 text-white py-2.5 rounded-lg font-bold text-sm shadow-md transition flex items-center justify-center gap-2">
+                            <button onclick="submitPosOrder()"
+                                class="w-full bg-orange-600 hover:bg-orange-700 text-white py-2.5 rounded-lg font-bold text-sm shadow-md transition flex items-center justify-center gap-2">
                                 <i class="fa-solid fa-check"></i> Place & Confirm Order
                             </button>
                         </div>
@@ -437,7 +521,8 @@
                             <h1 class="text-2xl font-bold text-gray-800">Menu Categories</h1>
                             <p class="text-sm text-gray-500">Manage categories dynamically via backend API.</p>
                         </div>
-                        <button onclick="openCategoryModal()" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition flex items-center gap-2">
+                        <button onclick="openCategoryModal()"
+                            class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition flex items-center gap-2">
                             <i class="fa-solid fa-plus"></i> Add Category
                         </button>
                     </div>
@@ -455,7 +540,9 @@
                                     </tr>
                                 </thead>
                                 <tbody id="categoryTableBody" class="divide-y divide-gray-100 text-gray-700">
-                                    <tr><td colspan="5" class="p-4 text-center text-gray-400">Loading categories...</td></tr>
+                                    <tr>
+                                        <td colspan="5" class="p-4 text-center text-gray-400">Loading categories...</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -467,14 +554,17 @@
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div>
                             <h1 class="text-2xl font-bold text-gray-800">Food Menu Management</h1>
-                            <p class="text-sm text-gray-500">Add, edit, or remove dishes with custom prices and images.</p>
+                            <p class="text-sm text-gray-500">Add, edit, or remove dishes with custom prices and images.
+                            </p>
                         </div>
-                        <button onclick="openItemModal()" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition flex items-center gap-2 self-start">
+                        <button onclick="openItemModal()"
+                            class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition flex items-center gap-2 self-start">
                             <i class="fa-solid fa-plus"></i> Add New Item
                         </button>
                     </div>
 
-                    <div id="itemsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <div id="itemsContainer"
+                        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                         <div class="col-span-full text-center text-gray-400 py-10">Loading food items...</div>
                     </div>
                 </div>
@@ -484,7 +574,8 @@
     </div>
 
     <!-- ================= MODAL: ORDER DETAILS (RECEIPT VIEW) ================= -->
-    <div id="orderDetailsModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4">
+    <div id="orderDetailsModal"
+        class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4">
         <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
             <!-- Modal Header -->
             <div class="flex items-center justify-between pb-4 border-b border-gray-100">
@@ -498,10 +589,13 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-2">
-                    <button onclick="printOrderReceipt()" class="text-gray-500 hover:text-orange-600 p-2 rounded-lg hover:bg-gray-50 transition" title="Print Invoice">
+                    <button onclick="printOrderReceipt()"
+                        class="text-gray-500 hover:text-orange-600 p-2 rounded-lg hover:bg-gray-50 transition"
+                        title="Print Invoice">
                         <i class="fa-solid fa-print text-lg"></i>
                     </button>
-                    <button onclick="closeOrderModal()" class="text-gray-400 hover:text-gray-600 p-2"><i class="fa-solid fa-xmark text-xl"></i></button>
+                    <button onclick="closeOrderModal()" class="text-gray-400 hover:text-gray-600 p-2"><i
+                            class="fa-solid fa-xmark text-xl"></i></button>
                 </div>
             </div>
 
@@ -556,10 +650,12 @@
             </div>
 
             <!-- Status Control Footer (Admin controls) -->
-            <div class="pt-4 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-3 no-print">
+            <div
+                class="pt-4 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-3 no-print">
                 <div class="flex items-center gap-2 w-full sm:w-auto">
                     <span class="text-xs font-semibold text-gray-500">Change Status:</span>
-                    <select id="modStatusSelect" class="bg-gray-50 border border-gray-200 text-xs font-bold rounded-lg px-3 py-1.5 focus:outline-none focus:border-orange-500">
+                    <select id="modStatusSelect"
+                        class="bg-gray-50 border border-gray-200 text-xs font-bold rounded-lg px-3 py-1.5 focus:outline-none focus:border-orange-500">
                         <option value="pending">Pending</option>
                         <option value="confirmed">Confirmed</option>
                         <option value="preparing">Preparing</option>
@@ -567,11 +663,13 @@
                         <option value="delivered">Delivered</option>
                         <option value="cancelled">Cancelled</option>
                     </select>
-                    <button onclick="saveOrderStatusFromModal()" class="bg-orange-600 hover:bg-orange-700 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition">
+                    <button onclick="saveOrderStatusFromModal()"
+                        class="bg-orange-600 hover:bg-orange-700 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition">
                         Update
                     </button>
                 </div>
-                <button type="button" onclick="closeOrderModal()" class="w-full sm:w-auto bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-xs font-semibold">
+                <button type="button" onclick="closeOrderModal()"
+                    class="w-full sm:w-auto bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-xs font-semibold">
                     Close
                 </button>
             </div>
@@ -579,47 +677,58 @@
     </div>
 
     <!-- ================= MODAL: ADD/EDIT CATEGORY ================= -->
-    <div id="categoryModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div id="categoryModal"
+        class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl relative">
             <div class="flex items-center justify-between pb-4 border-b border-gray-100">
                 <h3 id="categoryModalTitle" class="text-lg font-bold text-gray-800">Add Category</h3>
-                <button onclick="closeCategoryModal()" class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+                <button onclick="closeCategoryModal()" class="text-gray-400 hover:text-gray-600"><i
+                        class="fa-solid fa-xmark text-lg"></i></button>
             </div>
             <form id="categoryForm" onsubmit="handleCategorySubmit(event)" class="space-y-4 pt-4">
                 <input type="hidden" id="catIdInput">
                 <div>
                     <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Category Name *</label>
-                    <input type="text" id="catNameInput" required class="w-full bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg text-sm focus:outline-none focus:border-orange-500">
+                    <input type="text" id="catNameInput" required
+                        class="w-full bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg text-sm focus:outline-none focus:border-orange-500">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Slug</label>
-                    <input type="text" id="catSlugInput" placeholder="auto-generated-if-empty" class="w-full bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg text-sm focus:outline-none focus:border-orange-500">
+                    <input type="text" id="catSlugInput" placeholder="auto-generated-if-empty"
+                        class="w-full bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg text-sm focus:outline-none focus:border-orange-500">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Description</label>
-                    <textarea id="catDescInput" rows="3" class="w-full bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg text-sm focus:outline-none focus:border-orange-500"></textarea>
+                    <textarea id="catDescInput" rows="3"
+                        class="w-full bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg text-sm focus:outline-none focus:border-orange-500"></textarea>
                 </div>
                 <div class="flex items-center justify-end gap-3 pt-4 border-t border-gray-100">
-                    <button type="button" onclick="closeCategoryModal()" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm">Cancel</button>
-                    <button type="submit" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm">Save Category</button>
+                    <button type="button" onclick="closeCategoryModal()"
+                        class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm">Cancel</button>
+                    <button type="submit"
+                        class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm">Save
+                        Category</button>
                 </div>
             </form>
         </div>
     </div>
 
     <!-- ================= MODAL: ADD/EDIT FOOD ITEM ================= -->
-    <div id="itemModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div id="itemModal"
+        class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-xl relative">
             <div class="flex items-center justify-between pb-4 border-b border-gray-100">
                 <h3 id="itemModalTitle" class="text-lg font-bold text-gray-800">Add Menu Item</h3>
-                <button onclick="closeItemModal()" class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+                <button onclick="closeItemModal()" class="text-gray-400 hover:text-gray-600"><i
+                        class="fa-solid fa-xmark text-lg"></i></button>
             </div>
             <form id="itemForm" onsubmit="handleItemSubmit(event)" class="space-y-4 pt-4">
                 <input type="hidden" id="itemIdInput">
-                
+
                 <div>
                     <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Category</label>
-                    <select id="itemCategorySelect" required class="w-full bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg text-sm focus:outline-none focus:border-orange-500">
+                    <select id="itemCategorySelect" required
+                        class="w-full bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg text-sm focus:outline-none focus:border-orange-500">
                         <option value="">Select a category</option>
                     </select>
                 </div>
@@ -627,27 +736,34 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Item Name *</label>
-                        <input type="text" id="itemNameInput" required placeholder="e.g. Angus Burger" class="w-full bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg text-sm focus:outline-none focus:border-orange-500">
+                        <input type="text" id="itemNameInput" required placeholder="e.g. Angus Burger"
+                            class="w-full bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg text-sm focus:outline-none focus:border-orange-500">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Price (৳) *</label>
-                        <input type="number" step="0.01" id="itemPriceInput" required placeholder="320.00" class="w-full bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg text-sm focus:outline-none focus:border-orange-500">
+                        <input type="number" step="0.01" id="itemPriceInput" required placeholder="320.00"
+                            class="w-full bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg text-sm focus:outline-none focus:border-orange-500">
                     </div>
                 </div>
 
                 <div>
                     <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Image URL</label>
-                    <input type="url" id="itemImageInput" placeholder="https://images.unsplash.com/..." class="w-full bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg text-sm focus:outline-none focus:border-orange-500">
+                    <input type="url" id="itemImageInput" placeholder="https://images.unsplash.com/..."
+                        class="w-full bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg text-sm focus:outline-none focus:border-orange-500">
                 </div>
 
                 <div>
                     <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Description</label>
-                    <textarea id="itemDescInput" rows="3" placeholder="Ingredients and details..." class="w-full bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg text-sm focus:outline-none focus:border-orange-500"></textarea>
+                    <textarea id="itemDescInput" rows="3" placeholder="Ingredients and details..."
+                        class="w-full bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg text-sm focus:outline-none focus:border-orange-500"></textarea>
                 </div>
 
                 <div class="flex items-center justify-end gap-3 pt-4 border-t border-gray-100">
-                    <button type="button" onclick="closeItemModal()" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm">Cancel</button>
-                    <button type="submit" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-semibold">Save Item</button>
+                    <button type="button" onclick="closeItemModal()"
+                        class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm">Cancel</button>
+                    <button type="submit"
+                        class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-semibold">Save
+                        Item</button>
                 </div>
             </form>
         </div>
@@ -703,7 +819,7 @@
             document.getElementById('unauthenticatedView').classList.add('hidden');
             document.getElementById('authenticatedApp').classList.remove('hidden');
             renderAuthHeader();
-            
+
             // Pre-fill POS customer name
             if (currentUser && currentUser.fullName) {
                 const posNameEl = document.getElementById('posCustomerName');
@@ -863,7 +979,7 @@
 
             Object.keys(pages).forEach(key => {
                 if (pages[key]) pages[key].classList.add('hidden');
-                if (navs[key]) navs[key].className = (key === 'orders' 
+                if (navs[key]) navs[key].className = (key === 'orders'
                     ? 'w-full flex items-center justify-between px-6 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition'
                     : defaultNav);
             });
@@ -871,7 +987,7 @@
             if (pages[tab]) {
                 pages[tab].classList.remove('hidden');
                 if (navs[tab]) {
-                    navs[tab].className = (tab === 'orders' 
+                    navs[tab].className = (tab === 'orders'
                         ? 'w-full flex items-center justify-between px-6 py-3 text-sm font-medium text-orange-600 bg-orange-50 border-r-4 border-orange-600 transition'
                         : activeNav);
                 }
@@ -977,7 +1093,7 @@
                 <tr class="hover:bg-gray-50/50 transition">
                     <td class="p-3.5">
                         <span class="font-bold text-gray-900">#ORD-${o.order_id}</span>
-                        <div class="text-[11px] text-gray-400 mt-0.5">${new Date(o.created_at).toLocaleDateString()} ${new Date(o.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                        <div class="text-[11px] text-gray-400 mt-0.5">${new Date(o.created_at).toLocaleDateString()} ${new Date(o.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
                     </td>
                     <td class="p-3.5">
                         <div class="font-bold text-gray-800">${o.customer_name}</div>
@@ -1062,7 +1178,7 @@
                 renderOrdersTable(ordersCache);
                 return;
             }
-            const filtered = ordersCache.filter(o => 
+            const filtered = ordersCache.filter(o =>
                 o.order_id.toString().includes(term) ||
                 (o.customer_name && o.customer_name.toLowerCase().includes(term)) ||
                 (o.customer_phone && o.customer_phone.toLowerCase().includes(term)) ||
@@ -1189,7 +1305,7 @@
                 const res = await fetch(`${API_BASE_URL}/categories?limit=50`, { headers: getAuthHeaders() });
                 categoriesCache = await res.json();
                 const container = document.getElementById('posCategoryTabs');
-                
+
                 container.innerHTML = `
                     <button onclick="filterPosMenu(null)" class="pos-cat-btn ${selectedPosCategory === null ? 'active bg-orange-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap">All</button>
                 ` + (Array.isArray(categoriesCache) ? categoriesCache.map(cat => `
@@ -1255,8 +1371,8 @@
                 renderPosItems(itemsCache);
                 return;
             }
-            const filtered = itemsCache.filter(i => 
-                i.item_name.toLowerCase().includes(term) || 
+            const filtered = itemsCache.filter(i =>
+                i.item_name.toLowerCase().includes(term) ||
                 (i.descriptions && i.descriptions.toLowerCase().includes(term))
             );
             renderPosItems(filtered);
@@ -1394,7 +1510,7 @@
                 const data = await res.json();
                 categoriesCache = Array.isArray(data) ? data : [];
                 const tbody = document.getElementById('categoryTableBody');
-                
+
                 if (categoriesCache.length === 0) {
                     tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-gray-400">No categories found.</td></tr>`;
                     return;
@@ -1427,7 +1543,7 @@
                 }
                 const select = document.getElementById('itemCategorySelect');
                 if (select) {
-                    select.innerHTML = '<option value="">Select a category</option>' + 
+                    select.innerHTML = '<option value="">Select a category</option>' +
                         (Array.isArray(categoriesCache) ? categoriesCache.map(cat => `<option value="${cat.category_id}">${cat.category_name}</option>`).join('') : '');
                 }
             } catch (err) {
@@ -1644,4 +1760,5 @@
         });
     </script>
 </body>
+
 </html>
